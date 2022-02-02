@@ -1,3 +1,3 @@
 export default class Tag {
-    private tag: string|null=null;
+    private tag: string | null = null;
 }

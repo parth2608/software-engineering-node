@@ -1,12 +1,13 @@
 import TuitDao from "../daos/TuitDao";
+import Tuit from "../models/tuits/Tuit";
 import {Express, Request, Response} from "express";
-import TuitControllerI from "../interfaces/TuitController";
+import TuitControllerI from "../interfaces/TuitControllerI";
 
 export default class TuitController implements TuitControllerI {
-    private static tuitDao: TuitDao = TuitDao.getInstance();
-    private static tuitController: TuitController | null = null;
-    public static getInstance = (app: Express): TuitController => {
-    if(TuitController.tuitController === null) {
+private static tuitDao: TuitDao = TuitDao.getInstance();
+private static tuitController: TuitController | null = null;
+public static getInstance = (app: Express): TuitController => {
+if(TuitController.tuitController === null) {
             TuitController.tuitController = new TuitController();
             app.get("/api/tuits", TuitController.tuitController.findAllTuits);
             app.get("/api/users/:uid/tuits", TuitController.tuitController.findAllTuitsByUser);

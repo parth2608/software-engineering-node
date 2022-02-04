@@ -1,7 +1,6 @@
-import Tuit from "../models/Tuit";
-import TuitModel from "../mongoose/TuitModel";
-import TuitDaoI from "../interfaces/TuitDao";
-
+import TuitModel from "../mongoose/tuits/TuitModel";
+import Tuit from "../models/tuits/Tuit";
+import TuitDaoI from "../interfaces/TuitDaoI";
 export default class TuitDao implements TuitDaoI{
     private static tuitDao: TuitDao | null = null;
     public static getInstance = (): TuitDao => {

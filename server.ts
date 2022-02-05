@@ -1,6 +1,6 @@
 import express, {Request, Response} from 'express';
 import mongoose from "mongoose";
-mongoose.connect('mongodb+srv://parth2118:<password>@cluster0.stuva.mongodb.net/myFirstDatabase?retryWrites=true&w=majority');
+mongoose.connect("mongodb+srv://parth2608:Password12345@cluster0.srict.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
 import bodyParser from "body-parser";
 
 import UserController from "./controllers/UserController";

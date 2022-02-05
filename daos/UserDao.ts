@@ -1,6 +1,6 @@
-import UserModel from "../mongoose/users/UserModel";
-import User from "../models/users/User";
-import UserDaoI from "../interfaces/UserDaoI";
+import UserModel from "../mongoose/UserModel";
+import User from "../models/User";
+import UserDaoI from "../interfaces/UserDao";
 
 export default class UserDao implements UserDaoI {
     private static userDao: UserDao | null = null;

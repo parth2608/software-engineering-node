@@ -11,13 +11,11 @@ export default class UserController implements UserControllerI {
             UserController.userController = new UserController();
             app.get("/api/users/create", UserController.userController.createUser);
             app.get("/api/users/:uid/delete", UserController.userController.deleteUser);
-            app.get("/api/users/delete", UserController.userController.deleteAllUsers);
             app.get("/api/users", UserController.userController.findAllUsers);
             app.get("/api/users/:uid", UserController.userController.findUserById);
             app.post("/api/users", UserController.userController.createUser);
             app.put("/api/users/:uid", UserController.userController.updateUser);
             app.delete("/api/users/:uid", UserController.userController.deleteUser);
-            app.delete("/api/users", UserController.userController.deleteAllUsers);
         }
         return UserController.userController;
     }
@@ -36,8 +34,5 @@ export default class UserController implements UserControllerI {
             .then((status) => res.send(status));
     deleteUser = (req: Request, res: Response) =>
         UserController.userDao.deleteUser(req.params.uid)
-            .then((status) => res.send(status));
-    deleteAllUsers = (req: Request, res: Response) =>
-        UserController.userDao.deleteAllUsers()
             .then((status) => res.send(status));
 };

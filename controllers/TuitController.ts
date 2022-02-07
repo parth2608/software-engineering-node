@@ -4,23 +4,21 @@ import {Express, Request, Response} from "express";
 import TuitControllerI from "../interfaces/TuitController";
 
 export default class TuitController implements TuitControllerI {
-private static tuitDao: TuitDao = TuitDao.getInstance();
-private static tuitController: TuitController | null = null;
-public static getInstance = (app: Express): TuitController => {
-if(TuitController.tuitController === null) {
-            TuitController.tuitController = new TuitController();
-            app.get("/api/tuits", TuitController.tuitController.findAllTuits);
-            app.get("/api/users/:uid/tuits", TuitController.tuitController.findAllTuitsByUser);
-            app.get("/api/tuits/:uid", TuitController.tuitController.findTuitById);
-            app.post("/api/users/:uid/tuits", TuitController.tuitController.createTuitByUser);
-            app.put("/api/tuits/:uid", TuitController.tuitController.updateTuit);
-            app.delete("/api/tuits/:uid", TuitController.tuitController.deleteTuit);
+    private static tuitDao: TuitDao = TuitDao.getInstance();
+    private static tuitController: TuitController | null = null;
+    public static getInstance = (app: Express): TuitController => {
+    if(TuitController.tuitController === null) {
+                TuitController.tuitController = new TuitController();
+                app.get("/api/tuits", TuitController.tuitController.findAllTuits);
+                app.get("/api/users/:uid/tuits", TuitController.tuitController.findAllTuitsByUser);
+                app.get("/api/tuits/:uid", TuitController.tuitController.findTuitById);
+                app.post("/api/users/:uid/tuits", TuitController.tuitController.createTuitByUser);
+                app.put("/api/tuits/:uid", TuitController.tuitController.updateTuit);
+                app.delete("/api/tuits/:uid", TuitController.tuitController.deleteTuit);
+            }
+            return TuitController.tuitController;
         }
-        return TuitController.tuitController;
-    }
-
     private constructor() {}
-
     findAllTuits = (req: Request, res: Response) =>
         TuitController.tuitDao.findAllTuits()
             .then((tuits: Tuit[]) => res.json(tuits));
